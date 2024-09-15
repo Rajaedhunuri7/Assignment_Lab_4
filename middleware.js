@@ -1,4 +1,4 @@
- /*Set the CORS headers on the response object
+   /*Set the CORS headers on the response object
  * @param {object} req
  * @param {object} res
  * @param {function} next
@@ -20,4 +20,28 @@ function cors(req, res, next) {
   );
 
   next();
+}
+
+
+function handlerError(err, req, res next){
+console.error(err)
+
+ if (res.headerSent){
+  return next(err)
+ }
+
+ res.status(500).json({error:"Internal Error Ocuured"})
+}
+functionb notFound(req, res) {
+ res.status(404).json({error:"Not Found"})
+}
+
+ 
+ module.exports = {
+  cors,
+  handleError,
+  notFound,
+  
+ }
+ 
 }
