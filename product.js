@@ -5,11 +5,6 @@ const { urlToHttpOptions } = require("url");
 
 const productsFile = path.join(__dirname, "data/products.json");
 
-module.exports = {
-  list,
-  get,
-};
-
 /**
  * List all products
  * @returns {Promise<Array>}
@@ -19,8 +14,16 @@ async function list() {
   // return JSON.parse(data)
   const { offset = 0, limit = 25 } = options;
   const data = await fs.readFile(productsFile);
-  return JSON.parse(data).slice(offset, offset + limit);
+  return JSON.parse(data)
+//filter
+  .filter(product => {
+    
+  })
+  .slice(offset, offset+limit)
 }
+  
+  //return JSON.parse(data).slice(offset, offset + limit);
+//}
 
 async function get(id) {
   const products = JSON.parse(await fs.readFile(productsFile));
@@ -34,3 +37,9 @@ async function get(id) {
   // If no product is found, return null
   return null;
 }
+
+
+module.exports = {
+  list,
+  get,
+};
