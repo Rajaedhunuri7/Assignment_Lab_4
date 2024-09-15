@@ -12,7 +12,7 @@ const productsFile = path.join(__dirname, "data/products.json");
 async function list() {
   // const data = await fs.readFile(productsFile)
   // return JSON.parse(data)
-  const { offset = 0, limit = 25 } = options;
+  const { offset = 0, limit = 25,tag } = options;
   const data = await fs.readFile(productsFile);
   return JSON.parse(data)
 //filter
