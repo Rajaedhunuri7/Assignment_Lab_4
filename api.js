@@ -31,14 +31,15 @@ async function getProducts(req, res, next) {
  */
 async function listProducts(req, res) {
     //res.setHeader("Access-Control-Allow-Origin", "*");
-    const { offset = 0, limit = 25 } = req.query;
+    const { offset = 0, limit = 25, tag  } = req.query;
 
    //try {
         //const products = await Products.list({
     res.json(await Products.list({
             offset: Number(offset),
             limit: Number(limit),
-        });
+            tag,
+        }));
 
         //res.json(products);
     //} catch (err) {
